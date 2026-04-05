@@ -1812,7 +1812,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		
 		aClass = MultiTileEntityWireLaser.class;
-		aRegistry.add("Laser Fiber Wire", "Laser Wires", 24900, 24900, aClass, 3, 64, aMetalWires, UT.NBT.make(NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 1.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "PGR", "DxD", "RGP", 'P', OP.plate.dat(MT.Ag), 'G', OD.blockGlassColorless, 'D', OP.gem.dat(ANY.Diamond), 'R', OD.itemRedstone);
+		aRegistry.add("Laser Fiber Wire", "Laser Wires", 24900, 24900, aClass, 3, 64, aMetalWires, UT.NBT.make(NBT_MATERIAL, MT.NULL, NBT_HARDNESS, 1.0F, NBT_RESISTANCE, 2.0F, NBT_DIAMETER, PX_P[6], NBT_CONTACTDAMAGE, F), "GCG", "RSD", "w X", 'G', OD.blockGlassColorless, 'C', OD_CIRCUITS[3], 'R', OP.gemFlawless.dat(MT.Redstone), 'S', OP.plateCurved.dat(MT.Ag), 'D', OP.gemFlawless.dat(ANY.Diamond));
 		
 		
 		aClass = MultiTileEntityWireLogistics.class;

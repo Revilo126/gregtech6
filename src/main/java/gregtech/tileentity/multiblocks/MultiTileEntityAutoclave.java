@@ -41,6 +41,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityAutoclave extends TileEntityBase10MultiBlockMachine {
+	
 	@Override
 	public boolean checkStructure2(ChunkCoordinates aCoordinates, Entity aPlayer, IInventory aInventory) {
 		int tX = getOffsetXN(mFacing), tY = yCoord+1, tZ = getOffsetZN(mFacing);

@@ -300,7 +300,20 @@ public class CS {
 	, BIOMES_MOON           = new BiomeNameSet("Moon", "moon")
 	, BIOMES_MARS           = new BiomeNameSet("Mars", "mars", "marsFlat")
 	, BIOMES_ASTEROIDS      = new BiomeNameSet("Asteroids", "asteroids")
-	, BIOMES_SPACE          = new BiomeNameSet("Space", "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat", "Asteroids", "asteroids", "space", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea");
+	, BIOMES_SPACE          = new BiomeNameSet("Space", "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat", "Asteroids", "asteroids", "space", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea")
+	
+	, BIOMES_VENUS          = new BiomeNameSet("venus")
+	, BIOMES_CERES          = new BiomeNameSet("ceres")
+	, BIOMES_MERCURY        = new BiomeNameSet("mercury")
+	, BIOMES_PLUTO          = new BiomeNameSet("pluto")
+	
+	//, BIOMES_TCETIF         = new BiomeNameSet("tcetif")
+	//, BIOMES_VEGA_B         = new BiomeNameSet("vega_b")
+	
+	, BIOMES_BARNARDA_C     = new BiomeNameSet("barnard_c_dunes")
+	//, BIOMES_BARNARDA_E     = new BiomeNameSet("barnard_c")
+	
+	, BIOMES_PROXIMA_B      = new BiomeNameSet("proxima_b_beach", "proxima_b_forest", "proxima_b_ice_plains", "proxima_b_mountains", "proxima_b_ocean", "proxima_b_plains");
 	
 	// "Wasteland City", "Fens", "Carr", "Kakadu", "Scree", "Scrub", "Basin", "Badlands", "Outback", "Windy Island", "Cold Plains", "Cold Forest", "Hot Plains", "Hot Forest"
 	
@@ -924,6 +937,12 @@ public class CS {
 	, DIM_DEEPDARK = -100
 	, DIM_LASTMILLENIUM = -112
 	, DIM_TROPICS = -127
+	, DIM_MERCURY = -1005
+	, DIM_VENUS = -1006
+	, DIM_CERES = -1007
+	, DIM_PLUTO = -1008
+	, DIM_BARNARDA_C = -1050
+	, DIM_PROXIMA_B = -1025
 	;
 	
 	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
@@ -962,6 +981,15 @@ public class CS {
 	, GEN_ALFHEIM           = new ArrayListNoNulls<>()
 	, GEN_TROPICS           = new ArrayListNoNulls<>()
 	, GEN_CANDY             = new ArrayListNoNulls<>()
+	, GEN_CERES             = new ArrayListNoNulls<>()
+	, GEN_VENUS             = new ArrayListNoNulls<>()
+	, GEN_MERCURY           = new ArrayListNoNulls<>()
+	, GEN_PLUTO             = new ArrayListNoNulls<>()
+	//, GEN_TCETIF            = new ArrayListNoNulls<>()
+	//, GEN_VEGA_B            = new ArrayListNoNulls<>()
+	, GEN_BARNARDA_C        = new ArrayListNoNulls<>()
+	//, GEN_BARNARDA_E        = new ArrayListNoNulls<>()
+	, GEN_PROXIMA_B         = new ArrayListNoNulls<>()
 	, GEN_GEMS[]            = new List[] {GEN_OVERWORLD        , GEN_PFAA, GEN_ENVM,              GEN_A97,             GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_AETHER}
 	, GEN_FLOOR[]           = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_ENVM_GT, GEN_A97, GEN_A97_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT}
 	, GEN_ALL[]             = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_ENVM_GT, GEN_A97, GEN_A97_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
@@ -995,6 +1023,15 @@ public class CS {
 	, ORE_ALFHEIM           = new ArrayListNoNulls<>()
 	, ORE_TROPICS           = new ArrayListNoNulls<>()
 	, ORE_CANDY             = new ArrayListNoNulls<>()
+	, ORE_CERES             = new ArrayListNoNulls<>()
+	, ORE_VENUS             = new ArrayListNoNulls<>()
+	, ORE_MERCURY           = new ArrayListNoNulls<>()
+	, ORE_PLUTO             = new ArrayListNoNulls<>()
+	//, ORES_TCETIF            = new ArrayListNoNulls<>()
+	//, ORES_VEGA_B            = new ArrayListNoNulls<>()
+	, ORE_BARNARDA_C        = new ArrayListNoNulls<>()
+	//, ORES_BARNARDA_E        = new ArrayListNoNulls<>()
+	, ORE_PROXIMA_B         = new ArrayListNoNulls<>()
 	, ORE_FLOOR[]           = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_ENVM, ORE_A97, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_CW2_AquaCavern, ORE_CW2_Caveland, ORE_CW2_Cavenia, ORE_CW2_Cavern, ORE_CW2_Caveworld}
 	, ORE_ALL[]             = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_ENVM, ORE_A97, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_CW2_AquaCavern, ORE_CW2_Caveland, ORE_CW2_Cavenia, ORE_CW2_Cavern, ORE_CW2_Caveworld, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
 	;

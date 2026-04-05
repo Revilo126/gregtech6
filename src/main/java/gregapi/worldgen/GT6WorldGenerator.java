@@ -148,7 +148,6 @@ public class GT6WorldGenerator {
 		if (WD.dimTROPIC       (aWorld)) {generate(new WorldGenContainer(GEN_TROPICS     , ORE_TROPICS     , DIM_TROPICS     , aWorld, aX, aZ)); return;}
 		if (WD.dimCANDY        (aWorld)) {generate(new WorldGenContainer(GEN_CANDY       , ORE_CANDY       , DIM_CANDY       , aWorld, aX, aZ)); return;}
 		
-		
 		BiomeGenBase aBiome = aWorld.getBiomeGenForCoords(aX+7, aZ+7);
 		if (aBiome == null || BIOMES_VOID.contains(aBiome.biomeName)) return;
 		
@@ -170,6 +169,41 @@ public class GT6WorldGenerator {
 		}
 		if (aGalactiCraft || BIOMES_SPACE.contains(aBiome.biomeName)) {
 			generate(new WorldGenContainer(GEN_PLANETS, ORE_PLANETS, DIM_PLANETS, aWorld, aX, aZ));
+			return;
+		}
+		
+		if (BIOMES_VENUS.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_VENUS, ORE_VENUS, DIM_VENUS, aWorld, aX, aZ));
+			return;
+		}
+		
+		if (BIOMES_CERES.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_CERES, ORE_CERES, DIM_CERES, aWorld, aX, aZ));
+			return;
+		}
+		
+		if (BIOMES_MERCURY.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_MERCURY, ORE_MERCURY, DIM_MERCURY, aWorld, aX, aZ));
+			return;
+		}
+		
+		if (BIOMES_PLUTO.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_PLUTO, ORE_PLUTO, DIM_PLUTO, aWorld, aX, aZ));
+			return;
+		}
+		
+		if (BIOMES_PLUTO.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_PLUTO, ORE_PLUTO, DIM_PLUTO, aWorld, aX, aZ));
+			return;
+		}
+		
+		if (BIOMES_BARNARDA_C.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_BARNARDA_C, ORE_BARNARDA_C, DIM_BARNARDA_C, aWorld, aX, aZ));
+			return;
+		}
+		
+		if (BIOMES_PROXIMA_B.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_PROXIMA_B, ORE_PROXIMA_B, DIM_PROXIMA_B, aWorld, aX, aZ));
 			return;
 		}
 	}
