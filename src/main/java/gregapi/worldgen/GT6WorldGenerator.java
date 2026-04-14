@@ -167,43 +167,28 @@ public class GT6WorldGenerator {
 			generate(new WorldGenContainer(GEN_ASTEROIDS, ORE_ASTEROIDS, DIM_ASTEROIDS, aWorld, aX, aZ));
 			return;
 		}
-		if (aGalactiCraft || BIOMES_SPACE.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_PLANETS, ORE_PLANETS, DIM_PLANETS, aWorld, aX, aZ));
+		//if (aGalactiCraft || BIOMES_SPACE.contains(aBiome.biomeName)) {
+		//	generate(new WorldGenContainer(GEN_PLANETS, ORE_PLANETS, DIM_PLANETS, aWorld, aX, aZ));
+		//	return;
+		//}
+		if (BIOMES_ALKALAI.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_ALKALAI, ORE_ALKALAI, DIM_ALKALAI, aWorld, aX, aZ));
 			return;
 		}
-		
-		if (BIOMES_VENUS.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_VENUS, ORE_VENUS, DIM_VENUS, aWorld, aX, aZ));
+		if (BIOMES_VITA.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_VITA, ORE_VITA, DIM_VITA, aWorld, aX, aZ));
 			return;
 		}
-		
-		if (BIOMES_CERES.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_CERES, ORE_CERES, DIM_CERES, aWorld, aX, aZ));
+		if (BIOMES_SULF.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_SULF, ORE_SULF, DIM_SULF, aWorld, aX, aZ));
 			return;
 		}
-		
-		if (BIOMES_MERCURY.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_MERCURY, ORE_MERCURY, DIM_MERCURY, aWorld, aX, aZ));
+		if (BIOMES_TUNGLE.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_TUNGLE, ORE_TUNGLE, DIM_TUNGLE, aWorld, aX, aZ));
 			return;
 		}
-		
-		if (BIOMES_PLUTO.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_PLUTO, ORE_PLUTO, DIM_PLUTO, aWorld, aX, aZ));
-			return;
-		}
-		
-		if (BIOMES_PLUTO.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_PLUTO, ORE_PLUTO, DIM_PLUTO, aWorld, aX, aZ));
-			return;
-		}
-		
-		if (BIOMES_BARNARDA_C.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_BARNARDA_C, ORE_BARNARDA_C, DIM_BARNARDA_C, aWorld, aX, aZ));
-			return;
-		}
-		
-		if (BIOMES_PROXIMA_B.contains(aBiome.biomeName)) {
-			generate(new WorldGenContainer(GEN_PROXIMA_B, ORE_PROXIMA_B, DIM_PROXIMA_B, aWorld, aX, aZ));
+		if (BIOMES_ADAM.contains(aBiome.biomeName)) {
+			generate(new WorldGenContainer(GEN_ADAM, ORE_ADAM, DIM_ADAM, aWorld, aX, aZ));
 			return;
 		}
 	}
