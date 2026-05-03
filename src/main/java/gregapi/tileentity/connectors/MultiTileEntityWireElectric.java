@@ -22,6 +22,7 @@ package gregapi.tileentity.connectors;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetDebugInfo;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
@@ -45,6 +46,8 @@ import gregapi.util.UT;
 import ic2.api.energy.EnergyNet;
 import ic2.api.energy.tile.IEnergySource;
 import ic2.api.energy.tile.IEnergyTile;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -60,7 +63,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IWailaTile {
 	public long mTransferredAmperes = 0, mTransferredWattage = 0, mWattageLast = 0, mLoss = 1, mAmperage = 1, mVoltage = 32;
 	public byte mRenderType = 0, mBurnCounter = 0;
 	
@@ -226,6 +229,14 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	@Override public OreDictMaterial getEnergyConductorMaterial() {return mMaterial;}
 	@Override public OreDictMaterial getEnergyConductorInsulation() {switch(mRenderType) {case 1: case 2: return ANY.Rubber; default: return MT.NULL;}}
 	
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		currentTip.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_VOLTAGE) + mVoltage + " " + TD.Energy.EU.getLocalisedNameShort() + " (" + VN[UT.Code.tierMin(mVoltage)] + ")");
+		currentTip.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_AMPERAGE) + mAmperage);
+		currentTip.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_LOSS) + mLoss + " " + TD.Energy.EU.getLocalisedNameShort() + "/m");
+		return currentTip;
+	}
+	
 	public boolean canEmitEnergyTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptEnergyFrom                      (byte aSide) {return connected(aSide);}
 	
@@ -245,4 +256,6 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	@Override public String getFacingTool                   () {return TOOL_cutter;}
 	
 	@Override public String getTileEntityName               () {return "gt.multitileentity.connector.wire.electric";}
+
+	
 }

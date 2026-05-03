@@ -22,6 +22,7 @@ package gregapi.tileentity.connectors;
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
@@ -47,6 +48,8 @@ import gregapi.tileentity.delegate.ITileEntityCanDelegate;
 import gregapi.util.CR;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.entity.Entity;
@@ -70,7 +73,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IWailaTile {
 	public byte mLastReceivedFrom[] = ZL_BYTE, mRenderType = 0;
 	public long mTemperature = DEF_ENV_TEMP, mMaxTemperature, mTransferredAmount = 0, mCapacity = 1000;
 	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F, mBlocking = F;
@@ -505,6 +508,28 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			if (tBlock == Blocks.cauldron || tBlock instanceof BlockCauldron) return T;
 		}
 		return F;
+	}
+	
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		for (int i = 0; i < mTanks.length; i++) {
+			mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
+			aNBT.setByte("gt.mlast."+i, mLastReceivedFrom[i]);
+		}
+		return aNBT;
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		NBTTagCompound aNBT = accessor.getNBTData();
+		mLastReceivedFrom = new byte[mTanks.length];
+		for (int i = 0; i < mTanks.length; i++) {
+			mTanks[i] = new FluidTankGT(aNBT, NBT_TANK+"."+i, mCapacity).setIndex(i);
+			mLastReceivedFrom[i] = aNBT.getByte("gt.mlast."+i);
+		}
+
+        for (int i = 0; i < mTanks.length; i++) IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
+        return currentTip;
 	}
 	
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}

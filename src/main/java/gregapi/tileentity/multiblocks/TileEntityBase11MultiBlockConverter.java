@@ -19,9 +19,11 @@
 
 package gregapi.tileentity.multiblocks;
 
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.LH;
+import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.tileentity.behavior.TE_Behavior_Active_Trinary;
 import gregapi.tileentity.behavior.TE_Behavior_Energy_Capacitor;
@@ -31,6 +33,8 @@ import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -45,7 +49,7 @@ import static gregapi.data.CS.*;
  * 
  * Some Defaults for MultiBlock Machines.
  */
-public abstract class TileEntityBase11MultiBlockConverter extends TileEntityBase10MultiBlockBase implements ITileEntityRunningActively, ITileEntityEnergy, IMultiBlockEnergy {
+public abstract class TileEntityBase11MultiBlockConverter extends TileEntityBase10MultiBlockBase implements ITileEntityRunningActively, ITileEntityEnergy, IMultiBlockEnergy, IWailaTile {
 	protected boolean mStopped = F;
 	protected byte mExplosionPrevention = 0;
 	
@@ -119,6 +123,12 @@ public abstract class TileEntityBase11MultiBlockConverter extends TileEntityBase
 	@Override public boolean onTickCheck(long aTimer) {return mActivity.check(mStopped) || super.onTickCheck(aTimer);}
 	@Override public void setVisualData(byte aData) {mActivity.mState = aData;}
 	@Override public byte getVisualData() {return mActivity.mState;}
+	
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		currentTip.add(mStructureOkay ? Chat.GREEN + LH.get(LH.FORMED) : Chat.RED + LH.get(LH.NOT_FORMED));
+		return currentTip;
+	}
 	
 	public abstract TileEntity getEmittingTileEntity();
 	public abstract byte getEmittingSide();

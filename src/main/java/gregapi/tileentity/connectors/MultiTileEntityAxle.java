@@ -20,6 +20,7 @@
 package gregapi.tileentity.connectors;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetDebugInfo;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
@@ -37,6 +38,8 @@ import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataConductor;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -52,7 +55,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo {
+public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo, IWailaTile {
 	public long mTransferredPower = 0, mTransferredSpeed = 0, mTransferredEnergy = 0, mTransferredLast = 0, mPower = 1, mSpeed = 32;
 	public byte mRotationDir = 0, oRotationDir = 0;
 	
@@ -159,6 +162,13 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	@Override public long getEnergyLossPerMeter(TagData aEnergyType) {return 0;}
 	@Override public OreDictMaterial getEnergyConductorMaterial() {return mMaterial;}
 	@Override public OreDictMaterial getEnergyConductorInsulation() {return MT.NULL;}
+	
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		currentTip.add(Chat.CYAN + LH.get(LH.AXLE_STATS_SPEED) + mSpeed + " " + TD.Energy.RU.getLocalisedNameShort());
+		currentTip.add(Chat.CYAN + LH.get(LH.AXLE_STATS_POWER) + mPower);
+		return currentTip;
+	}
 	
 	public boolean canEmitEnergyTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptEnergyFrom                      (byte aSide) {return connected(aSide);}

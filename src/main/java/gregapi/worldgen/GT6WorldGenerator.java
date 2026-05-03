@@ -125,6 +125,13 @@ public class GT6WorldGenerator {
 		case DIM_OVERWORLD: generate(new WorldGenContainer(TFC ? GEN_TFC : PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, TFC ? ORE_TFC : PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD, aWorld, aX, aZ)); return;
 		case DIM_NETHER   : generate(new WorldGenContainer(GEN_NETHER, ORE_NETHER, DIM_NETHER, aWorld, aX, aZ)); return;
 		case DIM_END      : generate(new WorldGenContainer(GEN_END   , ORE_END   , DIM_END   , aWorld, aX, aZ)); return;
+		
+		// Use Dimensions for Reach planets. To ease the expansion of more planets
+		case DIM_ALKALAI  : generate(new WorldGenContainer(GEN_ALKALAI, ORE_ALKALAI, DIM_ALKALAI, aWorld, aX, aZ)); return;
+		case DIM_VITA     : generate(new WorldGenContainer(GEN_VITA   , ORE_VITA   , DIM_VITA   , aWorld, aX, aZ)); return;
+		case DIM_SULF     : generate(new WorldGenContainer(GEN_SULF   , ORE_SULF   , DIM_SULF   , aWorld, aX, aZ)); return;
+		case DIM_TUNGLE   : generate(new WorldGenContainer(GEN_TUNGLE , ORE_TUNGLE , DIM_TUNGLE , aWorld, aX, aZ)); return;
+		case DIM_ADAM     : generate(new WorldGenContainer(GEN_ADAM   , ORE_ADAM   , DIM_ADAM   , aWorld, aX, aZ)); return;
 		}
 		
 		if (WD.dimENVM         (aWorld)) {generate(new WorldGenContainer(GENERATE_STONE ? GEN_ENVM_GT           : GEN_ENVM          , GENERATE_STONE ? null : ORE_ENVM          , DIM_ENVM          , aWorld, aX, aZ)); return;}
@@ -171,7 +178,7 @@ public class GT6WorldGenerator {
 		//	generate(new WorldGenContainer(GEN_PLANETS, ORE_PLANETS, DIM_PLANETS, aWorld, aX, aZ));
 		//	return;
 		//}
-		if (BIOMES_ALKALAI.contains(aBiome.biomeName)) {
+		/*if (BIOMES_ALKALAI.contains(aBiome.biomeName)) {
 			generate(new WorldGenContainer(GEN_ALKALAI, ORE_ALKALAI, DIM_ALKALAI, aWorld, aX, aZ));
 			return;
 		}
@@ -190,7 +197,7 @@ public class GT6WorldGenerator {
 		if (BIOMES_ADAM.contains(aBiome.biomeName)) {
 			generate(new WorldGenContainer(GEN_ADAM, ORE_ADAM, DIM_ADAM, aWorld, aX, aZ));
 			return;
-		}
+		}*/
 	}
 	
 	public static void generate(WorldGenContainer aWorldgen) {

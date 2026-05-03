@@ -261,6 +261,15 @@ public class LH {
 	, TIME_WEEKS = "gt.lang.time.weeks"
 	, ADMIN_ONLY_CREATION = "gt.lang.admin.only.creation"
 	, WIP = "gt.lang.work.in.progress"
+	, FORMED = "gt.lang.formed"
+	, NOT_FORMED = "gt.lang.unformed"
+	, CONTENT = "gt.lang.content"
+	, STATE = "gt.lang.state"
+	, STATE_STOPPED_FORCE = "gt.lang.state.stopped.force"
+	, STATE_STOPPED   = "gt.lang.state.stopped"
+	, STATE_READY     = "gt.lang.state.ready"
+	, STATE_PASSIVE   = "gt.lang.state.passive"
+	, STATE_ACTIVE    = "gt.lang.state.active"
 	;
 	
 	public static final String add(String aKey, String aEnglish) {LanguageHandler.add(aKey, aEnglish); return aKey;}
@@ -653,6 +662,15 @@ public class LH {
 		add(TIME_WEEKS                                  , "Weeks");
 		add(ADMIN_ONLY_CREATION                         , "Admins have to spawn this in. (or you MineTweaker a Recipe in)");
 		add(WIP                                         , Chat.RESET + Chat.WHITE + Chat.BOLD + "WIP" + Chat.RESET_TOOLTIP + ", This may not be as functional as you expect it to be!");
+		add(FORMED                                      , "Formed");
+		add(NOT_FORMED                                  , "Not Formed");
+		add(CONTENT                                     , "Content");
+		add(STATE                                       , "State");
+		add(STATE_STOPPED_FORCE                         , "Force Stopped");
+		add(STATE_STOPPED                               , "Stopped");
+		add(STATE_READY                                 , "Ready");
+		add(STATE_PASSIVE                               , "Passively");
+		add(STATE_ACTIVE                                , "Active");
 	}
 	
 	public static class Chat {

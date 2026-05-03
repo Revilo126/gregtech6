@@ -20,6 +20,7 @@
 package gregapi.tileentity.multiblocks;
 
 import gregapi.GT_API;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -30,6 +31,8 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,7 +53,7 @@ import static gregapi.data.CS.*;
  * 
  * Some Defaults for MultiBlock Machines.
  */
-public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09FacingSingle implements ITileEntityMultiBlockController {
+public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09FacingSingle implements ITileEntityMultiBlockController, IWailaTile {
 	public boolean mStructureChanged = F, mStructureOkay = F;
 	
 	public IIconContainer[] mTextures = L6_IICONCONTAINER, mTexturesFront = L6_IICONCONTAINER;
@@ -191,6 +194,12 @@ public abstract class TileEntityBase10MultiBlockBase extends TileEntityBase09Fac
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]], mRGBa), BlockTextureDefault.get((aSide==mFacing?mTexturesFront:mTextures)[FACES_TBS[aSide]+3])) : null;
+	}
+	
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		currentTip.add(mStructureOkay ? Chat.GREEN + LH.get(LH.FORMED) : Chat.RED + LH.get(LH.NOT_FORMED));
+		return currentTip;
 	}
 	
 	@Override public boolean doDefaultStructuralChecks() {return T;}

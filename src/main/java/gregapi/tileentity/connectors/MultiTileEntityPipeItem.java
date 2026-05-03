@@ -20,6 +20,7 @@
 package gregapi.tileentity.connectors;
 
 import gregapi.GT_API_Proxy;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
@@ -45,6 +46,8 @@ import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityCanDelegate;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -64,7 +67,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityProgress, ITileEntityItemPipe, ITileEntityServerTickPre {
+public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityProgress, ITileEntityItemPipe, ITileEntityServerTickPre, IWailaTile {
 	public long mTransferredItems = 0, mStepSize = 1;
 	public byte mLastReceivedFrom = SIDE_UNDEFINED, oLastReceivedFrom = SIDE_UNDEFINED, mRenderType = 0, mDisabledOutputs = 0, mDisabledInputs = 0;
 	public boolean mBlocking = F;
@@ -268,6 +271,13 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 	@Override public boolean canInsertItem2(int aSlot, ItemStack aStack, byte aSide) {if (!connected(aSide) || FACE_CONNECTED[aSide][mDisabledInputs]) return F; if (!UT.Code.containsSomething(getInventory())) mLastReceivedFrom = aSide; return mLastReceivedFrom == aSide && !slotHas(aSlot);}
 	@Override public boolean canExtractItem2(int aSlot, ItemStack aStack, byte aSide) {return SIDES_INVALID[aSide] || connected(aSide);}
 	@Override public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {ItemStack[] rStack = super.getDefaultInventory(aNBT); ACCESSIBLE_SLOTS = new int[rStack.length]; for (int i = 0; i < ACCESSIBLE_SLOTS.length; i++) ACCESSIBLE_SLOTS[i] = i; return rStack;}
+	
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		currentTip.add(Chat.CYAN + LH.get(LH.PIPE_STATS_STEPSIZE) + UT.Code.makeString(mStepSize));
+		currentTip.add(Chat.CYAN + LH.get(LH.PIPE_STATS_BANDWIDTH) + Chat.WHITE + UT.Code.makeString(getPipeCapacity()) + "/s");
+		return currentTip;
+	}
 	
 	@Override public boolean canEmitItemsTo                 (byte aSide, Object aSender) {return (aSender != this || aSide != mLastReceivedFrom) && connected(aSide);}
 	@Override public boolean canAcceptItemsFrom             (byte aSide, Object aSender) {return connected(aSide);}

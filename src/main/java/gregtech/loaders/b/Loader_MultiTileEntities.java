@@ -1947,7 +1947,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		
 		MultiTileEntityWireElectric.addElectricWires(29800, 28366, V[6]*2, 1, 2, 2, F, F, F, aRegistry, aMetalWires, aClass, MT.Graphene);
 		
-		MultiTileEntityWireElectric.addElectricWires(29950, 28366, V[15] , 4, 1, 1, F, F, F, aRegistry, aMetalWires, aClass, MT.Superconductor);
+		//MultiTileEntityWireElectric.addElectricWires(29950, 28366, V[15] , 4, 1, 1, F, F, F, aRegistry, aMetalWires, aClass, MT.Superconductor);
 	}
 	
 	private static void extenders(MultiTileEntityRegistry aRegistry, MultiTileEntityBlock aMetal, MultiTileEntityBlock aMetalChips, MultiTileEntityBlock aMetalWires, MultiTileEntityBlock aMachine, MultiTileEntityBlock aWooden, MultiTileEntityBlock aBush, MultiTileEntityBlock aStone, MultiTileEntityBlock aWool, MultiTileEntityBlock aTNT, MultiTileEntityBlock aHive, MultiTileEntityBlock aUtilMetal, MultiTileEntityBlock aUtilStone, MultiTileEntityBlock aUtilWood, MultiTileEntityBlock aUtilWool, OreDictMaterial aMat, Class<? extends TileEntity> aClass) {

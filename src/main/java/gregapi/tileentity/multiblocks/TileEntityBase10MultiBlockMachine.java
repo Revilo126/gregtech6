@@ -19,11 +19,15 @@
 
 package gregapi.tileentity.multiblocks;
 
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.data.LH;
 import gregapi.data.TD;
+import gregapi.data.LH.Chat;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.MultiTileEntityBasicMachine;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -45,7 +49,7 @@ import static gregapi.data.CS.*;
  * 
  * Some Defaults for MultiBlock Machines.
  */
-public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityBasicMachine implements IMultiBlockFluidHandler, IMultiBlockInventory, IMultiBlockEnergy {
+public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityBasicMachine implements IMultiBlockFluidHandler, IMultiBlockInventory, IMultiBlockEnergy, IWailaTile {
 	public boolean mStructureChanged = F, mStructureOkay = F;
 	
 	@Override
@@ -115,6 +119,12 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 		}
 		mStructureChanged = F;
 		return mStructureOkay;
+	}
+	
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		currentTip.add(mStructureOkay ? Chat.GREEN + LH.get(LH.FORMED) : Chat.RED + LH.get(LH.NOT_FORMED));
+		return currentTip;
 	}
 	
 	@Override

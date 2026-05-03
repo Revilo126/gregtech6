@@ -516,9 +516,9 @@ public class MT {
 	static OreDictMaterial livermorium    () {return element     (1160, "Livermorium"    , "Lv"    , 116, 177,   708,  1085, 12.9       , SET_RAD                                      , CHALCOGEN      , G_INGOT_ORES                                                                                                 ).aspects_met_rad(1, 2                                   );}
 	static OreDictMaterial farnsium       () {return element     (1170, "Farnsium"       , "Fa"    , 117, 177,   673,   823,  7.2       , SET_RAD     ,  60,  70,  80, 255             , HALOGEN        , G_INGOT_ORES        , "Tennessine"                                                                           ).aspects_met_rad(1, 2                                   );}
 	static OreDictMaterial oganesson      () {return element     (1180, "Oganesson"      , "Og"    , 118, 176,   258,   263,  5.0       , SET_RAD                                                       , G_INGOT_ORES                                                                                                 ).aspects_met_rad(1, 2                                   );}
-	static OreDictMaterial ununennium     () {return element     (1190, "Ununennium"     , "Uue"   , 119, 178,   290,   903,           0, SET_RAD                                                       , G_INGOT_ORES                                                                                                 ).aspects_met_rad(1, 2                                   );}
-	static OreDictMaterial unbinilium     () {return element     (1200, "Unbinilium"     , "Ubn"   , 120, 180,   953,  1973,           0, SET_RAD                                                       , G_INGOT_ORES                                                                                                 ).aspects_met_rad(1, 2                                   );}
-	
+	static OreDictMaterial ununennium     () {return element     (1190, "Ununennium"     , "Uue"   , 119, 178,   290,   903,  3.0       , SET_RAD                                                       , G_INGOT_ORES        , MOLTEN, GASES, PLASMA                                                                  ).aspects_met_rad(1, 2                                   );}
+	static OreDictMaterial unbinilium     () {return element     (1200, "Unbinilium"     , "Ubn"   , 120, 180,   953,  1973,  7.0       , SET_RAD                                                       , G_INGOT_ORES        , MOLTEN, GASES, PLASMA                                                                  ).aspects_met_rad(1, 2                                   );}
+	static OreDictMaterial unbiunium      () {return element     (1210, "Unbiunium"      , "Ubu"   , 120, 182,   950,  1985,  7.0       , SET_RAD                                                       , G_INGOT_ORES        , MOLTEN, GASES, PLASMA                                                                  ).aspects_met_rad(1, 2                                   );}
 	
 	/** Technical Material describing a Nullpointer */
 	public static final OreDictMaterial NULL = create(-1, "NULL").setStatsElement(0,0,0,0,0).put(INVALID_MATERIAL, DONT_SHOW_THIS_COMPONENT);
@@ -688,7 +688,7 @@ public class MT {
 	Ubn     = unbinilium     (),
 	
 	// The following Data is in no way reliable, but it is there in case someone wants to use it.
-	Ubu     = unknown( 1210,  182),
+	Ubu     = unbiunium         (),
 	Ubb     = unknown( 1220,  184),
 	Ubt     = unknown( 1230,  186),
 	Ubq     = unknown( 1240,  188),
@@ -1301,7 +1301,7 @@ public class MT {
 	Rubber                  = create        ( 8217, "Rubber"                , SET_RUBBER            ,  20,  20,  20, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, STRETCHY, FURNACE)                             .uumMcfg( 0, C              , 5*U, H                , 8*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(410).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 0),
 	Plastic                 = create        ( 8218, "Plastic"               , SET_DULL              , 200, 200, 200, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE)                              .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
 	Teflon                  = create        ( 8196, "Teflon"                , SET_DULL              ,  80,  80,  80, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE, "Polymer", "PTFE")           .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1), PTFE = Teflon,
-	PVC                     = create        ( 8197, "PVC"                   , SET_DULL              , 250, 250,  50, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE)                              .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
+	/*PVC                     = create        ( 8197, "PVC"                   , SET_DULL              , 250, 250,  50, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE)                              .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1), Replace with Reach Core's version  */
 	Bakelite                = create        ( 8198, "Bakelite"              , SET_DULL              , 201,  57,  64, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE)                              .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
 	Polycarbonate           = create        ( 8199, "Hard Plastic"          , SET_DULL              , 180, 180, 180, 255, G_INGOT_MACHINE, APPROXIMATE, FLAMMABLE, EXTRUDER, EXTRUDER_SIMPLE, WIRES, MORTAR, BOUNCY, BRITTLE, FURNACE, "Polycarbonate")             .uumMcfg( 0, C              , 1*U, H                , 2*U)                                                                                                  .aspects(TC.MOTUS, 2).heat(423).setBurning(Ash, U9).setSmelting(null, 2*U3).qual(1, 3.0, 256, 1),
 	Bone                    = oredustelec   ( 8219, "Bone"                  , SET_DULL              , 250, 250, 250, 255, MORTAR, "Fossil")                                                                                                                         .uumMcfg( 8, Ca             , 1*U)                                                                                                                          .aspects(TC.MORTUUS, 2, TC.CORPUS, 1).qual(1, 4.0,  64, 1), BoneWither = Bone,
@@ -2402,7 +2402,7 @@ public class MT {
 			Nb                      .put(MD.HBM); // don't COMMON_ORE this!
 			Nd                      .put(MD.HBM);
 			DeshAlloy               .put(MD.HBM);
-			PVC                     .put(MD.HBM).visDefault();
+			/*PVC                     .put(MD.HBM).visDefault(); Replace with Reach Core's Version*/
 			Teflon                  .put(MD.HBM).visDefault();
 			Bakelite                .put(MD.HBM).visDefault();
 			Polycarbonate           .put(MD.HBM).visDefault();
@@ -2724,7 +2724,7 @@ public class MT {
 			Plastic                 .addEnchantmentForDamage(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
 			Bakelite                .addEnchantmentForDamage(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
 			Teflon                  .addEnchantmentForDamage(Enchantment.knockback, 1).addEnchantmentForRanged(Enchantment.punch, 1);
-			PVC                     .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
+			/*PVC                     .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2); Replaced with Reach Core's Version*/
 			Polycarbonate           .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);          
 			Rubber                  .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);
 			Kalendrite              .addEnchantmentForDamage(Enchantment.knockback, 2).addEnchantmentForRanged(Enchantment.punch, 2);

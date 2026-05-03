@@ -74,7 +74,6 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-@SuppressWarnings("deprecation")
 public class MultiTileEntityBlock extends Block implements IBlock, IItemGT, IBlockDebugable, IBlockErrorable, IBlockOnWalkOver, IBlockSyncDataAndCoversAndIDs, IRenderedBlock, ITileEntityProvider, IBlockToolable, IBlockRetrievable, IBlockMaterial {
 	private static final Map<String, MultiTileEntityBlock> MULTITILEENTITYBLOCKMAP = new HashMap<>();
 	
