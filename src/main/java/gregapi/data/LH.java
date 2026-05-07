@@ -261,6 +261,7 @@ public class LH {
 	, TIME_WEEKS = "gt.lang.time.weeks"
 	, ADMIN_ONLY_CREATION = "gt.lang.admin.only.creation"
 	, WIP = "gt.lang.work.in.progress"
+	, HOLD_STRUCTURE = "gt.lang.structure.hold"
 	, FORMED = "gt.lang.formed"
 	, NOT_FORMED = "gt.lang.unformed"
 	, CONTENT = "gt.lang.content"
@@ -662,6 +663,7 @@ public class LH {
 		add(TIME_WEEKS                                  , "Weeks");
 		add(ADMIN_ONLY_CREATION                         , "Admins have to spawn this in. (or you MineTweaker a Recipe in)");
 		add(WIP                                         , Chat.RESET + Chat.WHITE + Chat.BOLD + "WIP" + Chat.RESET_TOOLTIP + ", This may not be as functional as you expect it to be!");
+		add(HOLD_STRUCTURE                              , "Hold [LSHIFT] for structure");
 		add(FORMED                                      , "Formed");
 		add(NOT_FORMED                                  , "Not Formed");
 		add(CONTENT                                     , "Content");
